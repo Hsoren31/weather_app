@@ -15,36 +15,49 @@
         </form>
     </section>
     <section id="current-weather">
-        <h2 data-current-time>Today <br> 8/20/2024 12:08</h2>
-        <i class="fa-solid fa-sun" data-current-icon></i>
-        <span data-current-conditions>Sunny</span>
-        <span data-current-temp>83&deg;</span>
+        <span data-current-time></span>
+        <span data-current-location></span>
+        <i data-current-icon></i>
+        <span data-current-conditions></span>
+        <span data-current-temp></span>
         <div class="temps">
             <p class="high-temp">High:
-                <span data-current-temp-high>98</span>
+                <span data-current-temp-high></span>
                 &deg; <span data-temp-unit>F</span>
             </p>
             <p class="low-temp">Low:
-                <span data-current-temp-low>65</span>
+                <span data-current-temp-low></span>
                 &deg; <span data-temp-unit>F</span>
             </p>
         </div>
     </section>
-    <template id="day-template">
+    <section id="current-hours">
+        
+    </section>
+    <div id="week_view">
+
+    </div>
+    <template data-day-template>
         <div class="day-card">
-            <h3 class="date" data-date></h3>
+            <span data-date></span>
             <span data-day-icon></span>
-            <span data-day-conditions></span>
             <div class="temps">
                 <p class="high-temp">High:
-                    <span data-day-temp-high></span>
+                    <span data-temp-high></span>
                     &deg; <span data-temp-unit>F</span>
                 </p>
                 <p class="low-temp">Low:
-                    <span data-day-temp-low>65</span>
+                    <span data-temp-low></span>
                     &deg; <span data-temp-unit>F</span>
                 </p>
             </div>
+        </div>
+    </template>
+        <template data-hours-template>
+        <div class="hours-card">
+            <span data-time></span>
+            <span data-hour-icon></span>
+            <span data-hour-temp></span>
         </div>
     </template>
 </body>
