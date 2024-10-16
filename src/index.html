@@ -1,64 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Template</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-<body>
-    <section id="search-bar">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"/>
+  </head>
+  <body>
+    <header>
+      <section id="search-bar">
         <form>
-            <label for="search">Search:</label>
-            <input id="search" name="search" type="search" placeholder="London...">
+          <label for="search"></label>
+          <input
+            id="search"
+            name="search"
+            type="search"
+            placeholder="Search..." />
+          <button id="search" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
         </form>
-    </section>
-    <section id="current-weather">
+      </section>
+    </header>
+    <main>
+      <section id="current-weather">
         <span data-current-time></span>
         <span data-current-location></span>
         <i data-current-icon></i>
         <span data-current-conditions></span>
-        <span data-current-temp></span>
+        <p>
+          <span data-current-temp></span>
+          &deg; <span data-temp-unit>F</span>
+        </p>
         <div class="temps">
-            <p class="high-temp">High:
-                <span data-current-temp-high></span>
-                &deg; <span data-temp-unit>F</span>
-            </p>
-            <p class="low-temp">Low:
-                <span data-current-temp-low></span>
-                &deg; <span data-temp-unit>F</span>
-            </p>
+          <p class="high-temp">
+            High:
+            <span data-current-temp-high></span>
+            &deg; <span data-temp-unit>F</span>
+          </p>
+          <p class="low-temp">
+            Low:
+            <span data-current-temp-low></span>
+            &deg; <span data-temp-unit>F</span>
+          </p>
         </div>
-    </section>
-    <section id="current-hours">
-        
-    </section>
-    <div id="week_view">
-
-    </div>
+      </section>
+      <section id="current-hours"></section>
+      <div id="week_view"></div>
+    </main>
     <template data-day-template>
-        <div class="day-card">
-            <span data-date></span>
-            <span data-day-icon></span>
-            <div class="temps">
-                <p class="high-temp">High:
-                    <span data-temp-high></span>
-                    &deg; <span data-temp-unit>F</span>
-                </p>
-                <p class="low-temp">Low:
-                    <span data-temp-low></span>
-                    &deg; <span data-temp-unit>F</span>
-                </p>
-            </div>
+      <div class="day-card">
+        <span data-date></span>
+        <span data-day-icon></span>
+        <div class="temps">
+          <p class="high-temp">
+            High:
+            <span data-temp-high></span>
+            &deg; <span data-temp-unit>F</span>
+          </p>
+          <p class="low-temp">
+            Low:
+            <span data-temp-low></span>
+            &deg; <span data-temp-unit>F</span>
+          </p>
         </div>
+      </div>
     </template>
-        <template data-hours-template>
-        <div class="hours-card">
-            <span data-time></span>
-            <span data-hour-icon></span>
-            <span data-hour-temp></span>
-        </div>
+    <template data-hours-template>
+      <div class="hours-card">
+        <span data-time></span>
+        <span data-hour-icon></span>
+        <span data-hour-temp></span>
+      </div>
     </template>
-</body>
+  </body>
 </html>

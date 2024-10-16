@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital@0;1&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Mulish", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  background-color: #55a4e6;
+}
+
+button {
+  font: inherit;
+}
+
+
+
+#current-weather,
+#current-hours,
+.day-card {
+  background-color: rgba(45, 53, 60, 0.386);
+  color: #fff;
+  padding: 15px;
+  border-radius: 15px;
+  max-width: 80vw;
+  margin: 10px auto;
+}
+
+#search-bar{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  padding: 5px;
+  font-size: 1rem;
+}
+
+input[type='search']{
+  min-height: 32px;
+  border: none;
+  border-radius: 5px;
+}
+
+#current-weather {
+  display: grid;
+  text-align: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+
+[data-current-location]{
+  font-size: 1.75rem;
+  font-family: 'Merriweather', serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+[data-date],
+[data-time] {
+  font-weight: 400;
+}
+
+.temps > p {
+  margin: 0;
+  text-wrap: nowrap;
+}
+
+#current-hours {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 10px;
+  overflow: scroll;
+}
+
+.hours-card {
+  display: grid;
+  align-items: center;
+}
+
+.day-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 412px){
+  .temps {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: nowrap;
+  }
+}
+
+@media (min-width: 600px){
+  .day-card {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
