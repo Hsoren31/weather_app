@@ -81,8 +81,8 @@ function renderCurrentWeather(weatherObj) {
     weatherObj.location;
   currWeatherSection.querySelector("[data-current-time]").innerText =
     weatherObj.time;
-  currWeatherSection.querySelector("[data-current-icon]").innerText =
-    weatherObj.icon;
+  currWeatherSection.querySelector("[data-current-icon]").className =
+    renderIcon(weatherObj.icon);
   currWeatherSection.querySelector("[data-current-conditions]").innerText =
     weatherObj.conditions;
   currWeatherSection.querySelector("[data-current-temp]").innerText =
@@ -100,7 +100,9 @@ function renderDaysWeather(weatherObj) {
   weatherObj.forEach((day) => {
     const dayContainer = dayTemplate.content.cloneNode(true);
     dayContainer.querySelector("[data-date]").innerText = day.date;
-    dayContainer.querySelector("[data-day-icon]").innerText = day.icon;
+    dayContainer.querySelector("[data-day-icon]").className = renderIcon(
+      day.icon
+    );
     dayContainer.querySelector("[data-temp-high]").innerText = day.tempMax;
     dayContainer.querySelector("[data-temp-low]").innerText = day.tempMin;
 
@@ -116,9 +118,36 @@ function renderCurrHourly(weatherObj) {
   todayHours.forEach((hour) => {
     const hourContainer = hoursTemplate.content.cloneNode(true);
     hourContainer.querySelector("[data-time]").innerText = hour.time;
-    hourContainer.querySelector("[data-hour-icon]").innerText = hour.icon;
+    hourContainer.querySelector("[data-hour-icon]").className = renderIcon(
+      hour.icon
+    );
     hourContainer.querySelector("[data-hour-temp]").innerText = hour.temp;
 
     currHoursContainer.appendChild(hourContainer);
   });
+}
+
+//render different icons
+function renderIcon(iconId) {
+  switch (iconId) {
+    case "snow":
+      return "fa-regular fa-snowflake";
+    case "rain":
+      return "fa-solid fa-cloud-rain";
+    case "fog":
+      return "fa-solid fa-smog";
+    case "wind":
+      return "fa-solid fa-wind";
+    case "cloudy":
+      return "fa-solid fa-cloud";
+    case "partly-cloudy-day":
+      return "fa-solid fa-cloud-sun";
+    case "partly-cloudy-night":
+      return "fa-solid fa-cloud-moon";
+    case "clear-day":
+      return "fa-solid fa-sun";
+    case "clear-night":
+      return "fa-regular fa-moon";
+    default:
+  }
 }

@@ -21,8 +21,6 @@ button {
   font: inherit;
 }
 
-
-
 #current-weather,
 #current-hours,
 .day-card {
@@ -34,7 +32,7 @@ button {
   margin: 10px auto;
 }
 
-#search-bar{
+#search-bar {
   display: flex;
   gap: 10px;
   justify-content: center;
@@ -42,7 +40,7 @@ button {
   font-size: 1rem;
 }
 
-input[type='search']{
+input[type="search"] {
   min-height: 32px;
   border: none;
   border-radius: 5px;
@@ -55,10 +53,13 @@ input[type='search']{
   padding: 10px;
 }
 
+[data-current-icon] {
+  font-size: 5rem;
+}
 
-[data-current-location]{
+[data-current-location] {
   font-size: 1.75rem;
-  font-family: 'Merriweather', serif;
+  font-family: "Merriweather", serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -71,6 +72,11 @@ input[type='search']{
 .temps > p {
   margin: 0;
   text-wrap: nowrap;
+}
+
+[data-hour-icon],
+[data-day-icon] {
+  font-size: 2rem;
 }
 
 #current-hours {
@@ -91,7 +97,7 @@ input[type='search']{
   align-items: center;
 }
 
-@media (min-width: 412px){
+@media (min-width: 412px) {
   .temps {
     display: flex;
     gap: 20px;
@@ -100,7 +106,7 @@ input[type='search']{
   }
 }
 
-@media (min-width: 600px){
+@media (min-width: 600px) {
   .day-card {
     flex-direction: row;
     justify-content: space-around;
