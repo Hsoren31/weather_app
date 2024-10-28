@@ -6,6 +6,10 @@ const dayTemplate = document.querySelector("[data-day-template]");
 const hoursTemplate = document.querySelector("[data-hours-template]");
 const searchButton = document.querySelector("#search-btn");
 
+const unitToggle = document.querySelector("[data-unit-toggle]");
+const metricRadio = document.querySelector("#cel");
+const imperialRadio = document.querySelector("#fah");
+
 searchButton.addEventListener("click", (e) => {
   e.preventDefault();
   if (e.target.tagName.toLowerCase() === "button") {
@@ -32,6 +36,30 @@ async function getWeather(location) {
   renderCurrentWeather(currWeather);
   renderDaysWeather(dailyWeather);
   renderCurrHourly(dailyWeather);
+
+  unitToggle.addEventListener("click", () => {
+    let metricUnits = !isMetric();
+    metricRadio.checked = metricUnits;
+    imperialRadio.checked = !metricUnits;
+    renderCurrentWeather(currWeather);
+    renderDaysWeather(dailyWeather);
+    renderCurrHourly(dailyWeather);
+    updateUnits();
+  });
+
+  metricRadio.addEventListener("change", () => {
+    renderCurrentWeather(currWeather);
+    renderDaysWeather(dailyWeather);
+    renderCurrHourly(dailyWeather);
+    updateUnits();
+  });
+
+  imperialRadio.addEventListener("change", () => {
+    renderCurrentWeather(currWeather);
+    renderDaysWeather(dailyWeather);
+    renderCurrHourly(dailyWeather);
+    updateUnits();
+  });
 }
 
 function parseCurrentWeather(data) {
@@ -89,11 +117,11 @@ function renderCurrentWeather(weatherObj) {
   currWeatherSection.querySelector("[data-current-conditions]").innerText =
     weatherObj.conditions;
   currWeatherSection.querySelector("[data-current-temp]").innerText =
-    weatherObj.temp;
+    displayTemp(weatherObj.temp);
   currWeatherSection.querySelector("[data-current-temp-high]").innerText =
-    weatherObj.highTemp;
+    displayTemp(weatherObj.highTemp);
   currWeatherSection.querySelector("[data-current-temp-low]").innerText =
-    weatherObj.lowTemp;
+    displayTemp(weatherObj.lowTemp);
 }
 
 function renderDaysWeather(weatherObj) {
@@ -106,8 +134,12 @@ function renderDaysWeather(weatherObj) {
     dayContainer.querySelector("[data-day-icon]").className = renderIcon(
       day.icon
     );
-    dayContainer.querySelector("[data-temp-high]").innerText = day.tempMax;
-    dayContainer.querySelector("[data-temp-low]").innerText = day.tempMin;
+    dayContainer.querySelector("[data-temp-high]").innerText = displayTemp(
+      day.tempMax
+    );
+    dayContainer.querySelector("[data-temp-low]").innerText = displayTemp(
+      day.tempMin
+    );
 
     weekViewContainer.appendChild(dayContainer);
   });
@@ -126,7 +158,9 @@ function renderCurrHourly(weatherObj) {
     hourContainer.querySelector("[data-hour-icon]").className = renderIcon(
       hour.icon
     );
-    hourContainer.querySelector("[data-hour-temp]").innerText = hour.temp;
+    hourContainer.querySelector("[data-hour-temp]").innerText = displayTemp(
+      hour.temp
+    );
 
     currHoursContainer.appendChild(hourContainer);
   });
@@ -176,4 +210,24 @@ function formatDate(date) {
     return "Today";
   }
   return format(parse(date, "yyyy-MM-d", new Date()), "iiii");
+}
+
+function updateUnits() {
+  const tempUnit = document.querySelectorAll("[data-temp-unit]");
+
+  tempUnit.forEach((unit) => {
+    unit.innerText = isMetric() ? "C" : "F";
+  });
+}
+
+function isMetric() {
+  return metricRadio.checked;
+}
+
+function displayTemp(temp) {
+  let returnTemp = temp;
+  if (isMetric()) {
+    returnTemp = (temp - 32) * (5 / 9);
+  }
+  return Math.round(returnTemp);
 }
