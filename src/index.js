@@ -15,10 +15,13 @@ searchButton.addEventListener("click", (e) => {
   if (e.target.tagName.toLowerCase() === "button") {
     const location = e.target.parentElement[0].value;
     getWeather(location);
+  } else if (e.target.tagName.toLowerCase() === "i") {
+    const location = e.target.parentElement.parentElement[0].value;
+    getWeather(location);
   }
 });
 
-getWeather("salt lake city");
+getWeather("London");
 
 async function getWeather(location) {
   const response = await fetch(

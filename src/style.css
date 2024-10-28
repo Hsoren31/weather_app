@@ -54,6 +54,12 @@ input[type="search"] {
   border-radius: 5px;
 }
 
+#search-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+}
+
 .unit {
   display: flex;
   gap: 0.5em;
