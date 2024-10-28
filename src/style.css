@@ -142,7 +142,8 @@ input[type="search"] {
   display: flex;
   gap: 20px;
   margin-bottom: 10px;
-  overflow: scroll;
+  overflow-x: scroll;
+  scrollbar-color: #fff transparent;
 }
 
 .hours-card {
