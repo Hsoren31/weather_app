@@ -1,4 +1,5 @@
 import _ from "lodash";
+import { format, parse } from "date-fns";
 import "./style.css";
 
 const dayTemplate = document.querySelector("[data-day-template]");
@@ -12,6 +13,8 @@ searchButton.addEventListener("click", (e) => {
     getWeather(location);
   }
 });
+
+getWeather("salt lake city");
 
 async function getWeather(location) {
   const response = await fetch(
@@ -80,7 +83,7 @@ function renderCurrentWeather(weatherObj) {
   currWeatherSection.querySelector("[data-current-location]").innerText =
     weatherObj.location;
   currWeatherSection.querySelector("[data-current-time]").innerText =
-    weatherObj.time;
+    formatTime(weatherObj.time);
   currWeatherSection.querySelector("[data-current-icon]").className =
     renderIcon(weatherObj.icon);
   currWeatherSection.querySelector("[data-current-conditions]").innerText =
@@ -99,7 +102,7 @@ function renderDaysWeather(weatherObj) {
 
   weatherObj.forEach((day) => {
     const dayContainer = dayTemplate.content.cloneNode(true);
-    dayContainer.querySelector("[data-date]").innerText = day.date;
+    dayContainer.querySelector("[data-date]").innerText = formatDate(day.date);
     dayContainer.querySelector("[data-day-icon]").className = renderIcon(
       day.icon
     );
@@ -117,7 +120,9 @@ function renderCurrHourly(weatherObj) {
 
   todayHours.forEach((hour) => {
     const hourContainer = hoursTemplate.content.cloneNode(true);
-    hourContainer.querySelector("[data-time]").innerText = hour.time;
+    hourContainer.querySelector("[data-time]").innerText = formatHour(
+      hour.time
+    );
     hourContainer.querySelector("[data-hour-icon]").className = renderIcon(
       hour.icon
     );
@@ -150,4 +155,25 @@ function renderIcon(iconId) {
       return "fa-regular fa-moon";
     default:
   }
+}
+
+function formatTime(time) {
+  return format(parse(time, "HH:mm:ss", new Date()), "h:mm a");
+}
+
+function formatHour(time) {
+  return format(parse(time, "HH:mm:ss", new Date()), "ha");
+}
+
+function formatDate(date) {
+  const today = new Date();
+
+  let day = today.getDate();
+  let month = today.getMonth() + 1;
+  let year = today.getFullYear();
+  const fullDate = `${year}-${month}-${day}`;
+  if (date === fullDate) {
+    return "Today";
+  }
+  return format(parse(date, "yyyy-MM-d", new Date()), "iiii");
 }

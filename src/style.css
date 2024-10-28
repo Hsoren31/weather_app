@@ -81,20 +81,27 @@ input[type="search"] {
 
 #current-hours {
   display: flex;
-  gap: 15px;
+  gap: 20px;
   margin-bottom: 10px;
   overflow: scroll;
 }
 
 .hours-card {
   display: grid;
-  align-items: center;
+  text-align: center;
+  gap: 10px;
 }
 
 .day-card {
   display: flex;
+  gap: 15px;
   flex-direction: column;
   align-items: center;
+}
+
+.day-card > [data-date] {
+  min-width: 120px;
+  text-align: center;
 }
 
 @media (min-width: 412px) {
@@ -103,6 +110,7 @@ input[type="search"] {
     gap: 20px;
     justify-content: center;
     flex-wrap: nowrap;
+    min-width: 300px;
   }
 }
 
